@@ -3,10 +3,11 @@ package ru.yandex.practicum.delivery;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParcelBox <T extends Parcel>{
+public class ParcelBox <T extends Parcel> {
 
     private List<T> parcels = new ArrayList<>();
     private int maxWeight;
+    private int currentWeight = 0;
 
     public ParcelBox(int maxWeight) {
         this.maxWeight = maxWeight;
@@ -14,13 +15,11 @@ public class ParcelBox <T extends Parcel>{
     }
 
     public void addParcel(T parcel) {
-        int currentWeight = 0;
-        for(T p : parcels) {
-            currentWeight += p.getWeight();
-        }
+
 
         if (currentWeight + parcel.getWeight() <= maxWeight) {
             parcels.add(parcel);
+            currentWeight +=parcel.getWeight();
         } else {
             System.out.println("Посылка не помещается в коробку");
         }

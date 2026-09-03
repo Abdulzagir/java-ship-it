@@ -38,34 +38,9 @@ public class DeliveryApp {
                     }
                     break;
                 case 5:
-                    System.out.println("Введите тип коробки: ");
-                    System.out.println("1.Стандартная");
-                    System.out.println("2.Хрупкая");
-                    System.out.println("3.Скоропортящаяся");
+                   showBoxContents();
+                   break;
 
-                    int choiceBox = Integer.parseInt(scanner.nextLine());
-
-                    switch (choiceBox) {
-                        case 1:
-                            for (StandartParcel parcel : standartBox.getAllParcels()) {
-                                System.out.println(parcel.getDescription());
-                            }
-                            break;
-                        case 2:
-                            for (FragileParcel parcel : fragileBox.getAllParcels()) {
-                                System.out.println(parcel.getDescription());
-                            }
-                            break;
-                        case 3:
-                            for (PerishableParcel parcel : perishableBox.getAllParcels()) {
-                                System.out.println(parcel.getDescription());
-
-                            }
-                            break;
-                        default:
-                            System.out.println("Неверный тип коробки");
-
-                    }
 
                 case 0:
                     running = false;
@@ -159,6 +134,39 @@ public class DeliveryApp {
 
                 // Подсказка: спросите тип посылки и необходимые поля, создайте объект и добавьте в allParcels
         }
+    }
+
+    public static void showBoxContents() {
+        System.out.println("Введите тип коробки: ");
+        System.out.println("1.Стандартная");
+        System.out.println("2.Хрупкая");
+        System.out.println("3.Скоропортящаяся");
+
+        int choiceBox = Integer.parseInt(scanner.nextLine());
+
+
+        switch (choiceBox) {
+            case 1:
+                for (StandartParcel parcel : standartBox.getAllParcels()) {
+                    System.out.println(parcel.getDescription());
+                }
+                break;
+            case 2:
+                for (FragileParcel parcel : fragileBox.getAllParcels()) {
+                    System.out.println(parcel.getDescription());
+                }
+                break;
+            case 3:
+                for (PerishableParcel parcel : perishableBox.getAllParcels()) {
+                    System.out.println(parcel.getDescription());
+
+                }
+                break;
+            default:
+                System.out.println("Неверный тип коробки");
+
+        }
+
     }
 
     private static void sendParcels() {
